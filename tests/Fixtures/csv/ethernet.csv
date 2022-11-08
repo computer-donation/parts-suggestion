@@ -1,0 +1,4 @@
+ethernetId,vendor,subVendor,device,probeId
+10ec-8168-10ec-8168,"Realtek Semiconductor Co., Ltd.","Realtek Semiconductor Co., Ltd.","RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller",0256C0AB03
+8086-27a1-8086-0000,"Intel Corporation","Intel Corporation","Mobile 945GM/PM/GMS, 943/940GML and 945GT Express PCI Express Root Port",7C5FDBE652
+1969-e0b1-1462-115a,"Qualcomm Atheros","Micro-Star International Co., Ltd. [MSI]","Killer E2500 Gigabit Ethernet Controller",D39AA81F63

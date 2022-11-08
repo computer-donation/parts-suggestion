@@ -1,0 +1,6 @@
+services:
+    _defaults:
+        public: true
+
+    test.Laudis\Neo4j\Contracts\ClientInterface:
+        alias: 'Laudis\Neo4j\Contracts\ClientInterface'

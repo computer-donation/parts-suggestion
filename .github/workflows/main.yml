@@ -1,0 +1,41 @@
+name: main
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Test
+    steps:
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
+        coverage: pcov
+        tools: phpstan, php-cs-fixer:3
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Run Neo4j
+      run: docker run -it --rm --health-cmd "wget http://localhost:7474 || exit 1" --health-interval 1s --health-timeout 10s --health-retries 20 --health-start-period 3s -d -p 7474:7474 -p 7687:7687 --env=NEO4J_AUTH=none -v ${{ github.workspace }}/tests/Fixtures/csv:/import neo4j
+
+    - name: Install
+      uses: "ramsey/composer-install@v2"
+
+    - name: Run PHP CS Fixer
+      run: php-cs-fixer fix --diff --dry-run
+
+    - name: Run PHPStan
+      run: phpstan analyse src tests config
+
+    - name: Test & Generate Code Coverage
+      run: ./bin/phpunit
+
+    - name: Upload coverage results to Coveralls
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        composer global require php-coveralls/php-coveralls
+        php-coveralls --coverage_clover=clover.xml -v
+      if: github.event_name == 'push'
