@@ -1,0 +1,4 @@
+gpuId,vendor,subVendor,device,probeId
+1002-68e4-1bfd-000a,"ATI Technologies Inc",EeeTOP,"Robson CE [Radeon HD 6370M/7370M]",09FE5E4566
+10de-1391-1025-0781,"nVidia Corporation","Acer Incorporated [ALI]","GM107M [GeForce GTX 850M]",63B708B27B
+8086-0416-1025-0781,"Intel Corporation","Acer Incorporated [ALI]","4th Gen Core Processor Integrated Graphics Controller",63B708B27B
